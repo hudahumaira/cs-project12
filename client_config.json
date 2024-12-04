@@ -108,5 +108,53 @@
                 "INCREASE 100"       
             ]
         }
+    },
+    {
+        "id": "@InvalidID!",
+        "password": "s123",
+        "server": {
+            "ip": "127.0.0.1",
+            "port": "65432"
+        },
+        "actions": {
+            "delay": "1",
+            "steps": [
+                "DECREASE 50",
+                "INCREASE 75",
+                "DECREASE 25",
+                "INCREASE 100"
+            ]
+        }
+    },
+    {
+        "id": "Emily",
+        "password": "",
+        "server": {
+            "ip": "127.0.0.1",
+            "port": "65432"
+        },
+        "actions": {
+            "delay": "1",
+            "steps": [
+                "DECREASE 50",
+                "INCREASE 75",
+                "DECREASE 25",
+                "INCREASE 100"
+            ]
+        }
+    },
+    {
+        "id": "Emily",
+        "password": "s123",
+        "server": {
+            "ip": "127.0.0.1",
+            "port": "65432"
+        },
+        "actions": {
+            "delay": "1",
+            "steps": [
+
+            ]
+        }
     }
 ]

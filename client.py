@@ -18,6 +18,7 @@ MAX_ACTIONS = 50
 
 
 #function to start a single client and connect it to the server using the config
+# Vulnerability Delay Implemented on Server-Side 15:
 def start_single_client(config):
     #create a new socket for client-server communication
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -82,9 +83,12 @@ def start_single_client(config):
             for action in valid_actions:
                 #send each action to the server and receive the response
                 client_socket.send(action.encode())
+
+                # Wait for the server's response
                 response = client_socket.recv(1024).decode()
                 print(f"{config['id']}: {response}")
 
+                # Vulnerability Delay Implemented on Server-Side 15:
                 #delay between actions as specified by the client config
                 time.sleep(delay)
     finally:
