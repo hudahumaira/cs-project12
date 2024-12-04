@@ -6,7 +6,9 @@ import threading
 #define max allowable values to prevent overflow or errors that could occur due to large inputs
 
 #max delay betwwen actions in seconds (1hr)
-MAX_DELAY = 3600
+# Large delay 5:
+# Changed max delay to 1 minute
+MAX_DELAY = 60
 #max length for client ID
 MAX_ID_LENGTH = 32
 #max length for client password
