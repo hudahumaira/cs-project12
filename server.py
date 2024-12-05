@@ -4,10 +4,6 @@ import time
 import threading
 import hashlib
 import hmac
-import bcrypt
-import ssl
-
-from argon2 import hash_password, verify_password
 # Vulnerability Encrypted Logging 16:
 # Used for the encrypted logging using the cryptography library
 from cryptography.fernet import Fernet
@@ -39,6 +35,15 @@ rate_limit_lock = threading.Lock()  # Ensure thread-safe access to rate limit da
 # Client data storage
 client_data = {}
 client_locks = threading.Lock()
+
+# Function to generate a salt for password hashing
+def generate_salt(user_id):
+    user_id_hash = hashlib.sha256(user_id.encode()).hexdigest()
+    return user_id_hash[:8]
+
+# Function to hash passwords securely
+def hash_password(password, salt):
+    return hmac.new(salt.encode(), password.encode(), hashlib.sha256).hexdigest()
 
 # Vulnerability  rate limiting 17:
 # Function to enforce rate limiting
@@ -100,22 +105,9 @@ class ClientHandler(threading.Thread):
             self.deregister_client()
             self.client_socket.close()
 
-    # Vulnerability Encrypted Logging 16:
-    # Vulnerability Vulnerable User Registration 14:
-    # Replaced plain text logging in with encrypted logging
-    # Vulnerability Weak Password hashing 3:
-    # Function to hash passwords securely using bcrypt
-    def hash_password(password):
-        # Generate a salt and hash the password
-        salt = bcrypt.gensalt()
-        hashed_password = bcrypt.hashpw(password.encode(), salt)
-        return hashed_password.decode()
-
-    # Function to verify passwords
-    def verify_password(password, hashed_password):
-        return bcrypt.checkpw(password.encode(), hashed_password.encode())
-
-    # Updated register_client method
+# Vulnerability Encrypted Logging 16:
+# Vulnerability Vulnerable User Registration 14:
+# Replaced plain text logging in with encrypted logging
     def register_client(self, client_info):
         incoming_id = client_info["id"]
         incoming_password = client_info["password"]
@@ -124,18 +116,14 @@ class ClientHandler(threading.Thread):
         if not incoming_id.strip() or not incoming_password.strip():
             self.client_socket.send(b"ERROR: Invalid ID or password.")
             return False
-        # Password requirements 9:
-        # Between 10 and 64
-        if not (10 <= len(incoming_password.strip()) <= 64):
-            self.client_socket.send(b"ERROR: Password must be between 10 and 64 characters.")
-            log_encrypted(f"Failed registration attempt for user {incoming_id}: Invalid password length.")
-            return False
 
+        # Generate salt and hash password
+        salt = generate_salt(incoming_id)
+        hashed_password = hash_password(incoming_password, salt)
 
         with client_locks:
             if incoming_id not in client_data:
                 # Register new client
-                hashed_password = hash_password(incoming_password)
                 client_data[incoming_id] = {
                     "password_hash": hashed_password,
                     "counter": 0,
@@ -144,16 +132,14 @@ class ClientHandler(threading.Thread):
                 self.client_socket.send(b"Registration successful.")
                 log_encrypted(f"User {incoming_id} registered successfully.")
                 return True
-            elif verify_password(incoming_password, client_data[incoming_id]["password_hash"]):
+            elif client_data[incoming_id]["password_hash"] == hashed_password:
                 # Allow login if password matches
                 client_data[incoming_id]["sessions"][self.address] = True
                 self.client_socket.send(b"Login successful.")
                 log_encrypted(f"User {incoming_id} logged in successfully.")
                 return True
             else:
-                # Explicit error message 1:
-                # Changed to Incorrect credentials
-                self.client_socket.send(b"ERROR: Incorrect credentials")
+                self.client_socket.send(b"ERROR: Incorrect password.")
                 log_encrypted(f"Failed login attempt for user {incoming_id}.")
                 return False
 
@@ -211,48 +197,17 @@ def clean_blacklist():
             log_encrypted("Blacklist cleared.")
 
 # Start server
-# Insecure data transmission 2:
-# Implemented SSL to ensure that even if data is intercepted, it cannot be deciphered by attackers
-# Limiting the amount of connections 4:
-# Maximum number of concurrent connections
-MAX_CONNECTIONS = 100  # Adjust as needed
-connection_semaphore = threading.Semaphore(MAX_CONNECTIONS)
-
-# Start server with SSL and connection limiting
 def start_server(ip, port):
-    # Create a socket and bind it
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind((ip, int(port)))
     server_socket.listen()
-
-    print(f"Server is running & listening securely on {ip}:{port}....")
-
-    # Wrap the socket with SSL
-    context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-    context.load_cert_chain(certfile="server_cert.pem", keyfile="server_key.pem")
-
-    secure_server_socket = context.wrap_socket(server_socket, server_side=True)
+    print("Server is running & listening....")
 
     threading.Thread(target=clean_blacklist, daemon=True).start()  # Start blacklist cleaner
-
     while True:
-        client_socket, address = secure_server_socket.accept()
-
-        # Check for available connections
-        if not connection_semaphore.acquire(blocking=False):
-            # Reject the connection if limit is reached
-            client_socket.send(b"ERROR: Server is too busy. Try again later.")
-            client_socket.close()
-            log_encrypted(f"Connection from {address[0]} rejected: server too busy.")
-            continue
-
-        # Start a new client handler thread
+        client_socket, address = server_socket.accept()
         handler = ClientHandler(client_socket, address)
         handler.start()
-
-        # Release semaphore when the thread finishes
-        handler.join()
-        connection_semaphore.release()
 
 # Main entry point
 if __name__ == "__main__":
