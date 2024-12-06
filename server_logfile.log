@@ -15,3 +15,20 @@
 2024-11-10 18:47:58,283 - Client Emily increased by 100, new value: 100
 2024-11-10 18:47:59,282 - Client Jerry increased by 300, new value: 600
 2024-11-10 18:48:00,285 - Client Sarah decreased by 100, new value: 150
+gAAAAABnUx3bRNP10r_3HlgJTyG3PH5QCDWAiBHkY3pBYxBPsoIhfOApi8ZHGqDHIpzzo8hzhCfMyqyYXTKu3t0d_AKoGZrsQnKPbeTl6kZwjPDhYrh-CeU=
+2024-12-06 19:33:16,399 - Error handling client from ('127.0.0.1', 63106): 'str' object has no attribute 'get'
+2024-12-06 19:33:16,652 - Error handling client from ('127.0.0.1', 63108): 'str' object has no attribute 'get'
+2024-12-06 20:20:13,214 - Nonce 312529c9-6fa0-4351-96a5-c6b48456de80 recorded for client client1.
+2024-12-06 20:20:13,223 - Nonce 320fcaa1-69dd-4b59-88c9-0943d4230075 recorded for client client2.
+2024-12-06 20:20:15,482 - Nonce 90422927-9369-4b0e-a778-26ec26303c9a recorded for client client2.
+2024-12-06 20:20:17,760 - Nonce 4f142568-27f1-4ea6-acc2-f908110cd2d6 recorded for client client3.
+2024-12-06 20:24:58,366 - Error handling client from ('127.0.0.1', 63754): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
+2024-12-06 20:24:58,619 - Error handling client from ('127.0.0.1', 63756): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
+2024-12-06 20:24:58,862 - Error handling client from ('127.0.0.1', 63758): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
+2024-12-06 20:25:40,224 - Error handling client from ('127.0.0.1', 63767): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
+2024-12-06 20:25:40,233 - Error handling client from ('127.0.0.1', 63769): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
+2024-12-06 20:25:40,241 - Error handling client from ('127.0.0.1', 63771): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
+2024-12-06 20:25:40,249 - Error handling client from ('127.0.0.1', 63773): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
+2024-12-06 20:27:50,081 - Error handling client from ('127.0.0.1', 63793): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
+2024-12-06 20:27:50,325 - Error handling client from ('127.0.0.1', 63795): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
+2024-12-06 20:27:51,598 - Error handling client from ('127.0.0.1', 63797): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'

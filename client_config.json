@@ -2,8 +2,10 @@
     {
         "id": "client1",
         "password": "correct",
+        "nonce": "abc2",
+        "timestamp": 1701786800,
         "server": {
-            "ip": "127.0.0.1",
+            "ip": "localhost",
             "port": 65432
         },
         "actions": {
@@ -16,10 +18,12 @@
         }
     },
     {
-        "id": "client1",
-        "password": "wrong",  
+        "id": "client2",
+        "password": "wrong12340",
+        "nonce": "unique-nonce-67890",
+        "timestamp": 1701786900,
         "server": {
-            "ip": "127.0.0.1",
+            "ip": "localhost",
             "port": 65432
         },
         "actions": {
@@ -31,64 +35,36 @@
         }
     },
     {
-        "id": "client1",
-        "password": "correct",  
+        "id": "client2",
+        "password": "wrong12340",
+        "nonce": "unique-nonce-67890",
+        "timestamp": 1701786900,
         "server": {
-            "ip": "127.0.0.1",
+            "ip": "localhost",
             "port": 65432
         },
         "actions": {
             "delay": "1",
             "steps": [
-                "DECREASE 10",
-                "INCREASE 20"
-            ]
-        }
-    },
-    {
-        "id": "client2",
-        "password": "securepassword",
-        "server": {
-            "ip": "127.0.0.1",
-            "port": 65432
-        },
-        "actions": {
-            "delay": "2",
-            "steps": [
-                "INCREASE 30",
-                "DECREASE 10"
-            ]
-        }
-    },
-    {
-        "id": "client2",
-        "password": "securepassword",  
-        "server": {
-            "ip": "127.0.0.1",
-            "port": 65432
-        },
-        "actions": {
-            "delay": "1",
-            "steps": [
-                "INCREASE 15",
-                "DECREASE 5"
+                "INCREASE 5"
             ]
         }
     },
     {
         "id": "client3",
-        "password": "new",
+        "password": "wrong12340",
+        "nonce": "unique-nonce-67890",
+        "timestamp": 1701786900,
         "server": {
-            "ip": "127.0.0.1",
+            "ip": "localhost",
             "port": 65432
         },
         "actions": {
             "delay": "1",
             "steps": [
-                "INCREASE 50",
-                "DECREASE 20"
+                "INCREASE 100",
+                "DECREASE 5"
             ]
         }
     }
-    
 ]
