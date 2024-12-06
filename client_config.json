@@ -1,160 +1,94 @@
 [
     {
-        "id": "Tom",
+        "id": "client1",
         "password": "correct",
         "server": {
             "ip": "127.0.0.1",
-            "port": "65432"
+            "port": 65432
         },
         "actions": {
             "delay": "1",
             "steps": [
-                "INCREASE 10",    
-                "DECREASE 5",     
-                "INCREASE 15"     
+                "INCREASE 10",
+                "DECREASE 5",
+                "INCREASE 15"
             ]
         }
     },
     {
-        "id": "Tom",
+        "id": "client1",
         "password": "wrong",  
         "server": {
             "ip": "127.0.0.1",
-            "port": "65432"
+            "port": 65432
         },
         "actions": {
             "delay": "1",
             "steps": [
-                "INCREASE 99",    
-                "DECREASE 99"     
+                "INCREASE 5",
+                "DECREASE 5"
             ]
         }
     },
     {
-        "id": "Tom",
+        "id": "client1",
         "password": "correct",  
         "server": {
             "ip": "127.0.0.1",
-            "port": "65432"
+            "port": 65432
         },
         "actions": {
             "delay": "1",
             "steps": [
-                "INCREASE 1500",  
-                "DECREASE 50"     
+                "DECREASE 10",
+                "INCREASE 20"
             ]
         }
     },
     {
-        "id": "Jerry",
-        "password": "securedpass",
+        "id": "client2",
+        "password": "securepassword",
         "server": {
             "ip": "127.0.0.1",
-            "port": "65432"
+            "port": 65432
         },
         "actions": {
             "delay": "2",
             "steps": [
-                "INCREASE 500",  
-                "DECREASE 200",  
-                "INCREASE 300"   
+                "INCREASE 30",
+                "DECREASE 10"
             ]
         }
     },
     {
-        "id": "Mark",
-        "password": "12345",
+        "id": "client2",
+        "password": "securepassword",  
         "server": {
             "ip": "127.0.0.1",
-            "port": "65432"
+            "port": 65432
         },
         "actions": {
             "delay": "1",
             "steps": [
-                "INCREASE 1000000",  
-                "DECREASE 100"       
+                "INCREASE 15",
+                "DECREASE 5"
             ]
         }
     },
     {
-        "id": "Sarah",
-        "password": "anotherpasswoooooooord",
+        "id": "client3",
+        "password": "new",
         "server": {
             "ip": "127.0.0.1",
-            "port": "65432"
-        },
-        "actions": {
-            "delay": "5",
-            "steps": [
-                "INCREASE 250",      
-                "INCREASE 1000001",  
-                "DECREASE 100"       
-            ]
-        }
-    },
-    {
-        "id": "Emily",
-        "password": "s123",
-        "server": {
-            "ip": "127.0.0.1",
-            "port": "65432"
+            "port": 65432
         },
         "actions": {
             "delay": "1",
             "steps": [
-                "DECREASE 50",       
-                "INCREASE 75",       
-                "DECREASE 25",       
-                "INCREASE 100"       
-            ]
-        }
-    },
-    {
-        "id": "@InvalidID!",
-        "password": "s123",
-        "server": {
-            "ip": "127.0.0.1",
-            "port": "65432"
-        },
-        "actions": {
-            "delay": "1",
-            "steps": [
-                "DECREASE 50",
-                "INCREASE 75",
-                "DECREASE 25",
-                "INCREASE 100"
-            ]
-        }
-    },
-    {
-        "id": "Emily",
-        "password": "",
-        "server": {
-            "ip": "127.0.0.1",
-            "port": "65432"
-        },
-        "actions": {
-            "delay": "1",
-            "steps": [
-                "DECREASE 50",
-                "INCREASE 75",
-                "DECREASE 25",
-                "INCREASE 100"
-            ]
-        }
-    },
-    {
-        "id": "Emily",
-        "password": "s123",
-        "server": {
-            "ip": "127.0.0.1",
-            "port": "65432"
-        },
-        "actions": {
-            "delay": "1",
-            "steps": [
-
+                "INCREASE 50",
+                "DECREASE 20"
             ]
         }
     }
+    
 ]
