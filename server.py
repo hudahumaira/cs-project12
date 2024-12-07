@@ -1,3 +1,7 @@
+## please have a look at the README.md file for the list of vulnerabilities
+## and their respective fixes
+
+
 import socket
 import ssl
 import json
