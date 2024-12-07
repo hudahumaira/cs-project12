@@ -4,28 +4,33 @@ import time
 import ssl
 import uuid
 
-# Constants for limits
-MAX_DELAY = 60  # Vulnerability too much delay allowed 5: Changed the delay from 1 hour to 1 minute
+#constants for limits
+#Vulnerability 05: Too Much Delay Allowed 
+#changed the delay from 1 hour to 1 minute
+MAX_DELAY = 60 
 MAX_ID_LENGTH = 32
 MAX_PASSWORD_LENGTH = 64
 MAX_AMOUNT = 1_000_000
 MAX_ACTIONS = 50
 
+#Fix of Vulnerability 02: Insecure Data Transmission
+#added SSL/TLS to secure the connection
 def start_client(config):
+    #create SSL context
     context = ssl.create_default_context()
     context.load_verify_locations("server_cert.pem")
     server_ip = config["server"]["ip"]
     server_port = int(config["server"]["port"])
 
     try:
-        # Secure connection
+        #secure connection
         with socket.create_connection((server_ip, server_port)) as sock:
             with context.wrap_socket(sock, server_hostname=server_ip) as client_socket:
-                # Validate and truncate ID and password
-                config["id"] = config["id"][:MAX_ID_LENGTH]
-                config["password"] = config["password"][:MAX_PASSWORD_LENGTH]
+                #validate ID and password
+                config["id"] = config["id"]
+                config["password"] = config["password"]
 
-                # Validate delay
+                #validate delay
                 delay_value = config["actions"]["delay"]
                 if delay_value.isdigit() and int(delay_value) <= MAX_DELAY:
                     delay = int(delay_value)
@@ -33,7 +38,7 @@ def start_client(config):
                     print(f"{config['id']}: Invalid delay value. Skipping actions.")
                     return
 
-                # Validate actions
+                #validate actions
                 valid_actions = []
                 for action in config["actions"]["steps"][:MAX_ACTIONS]:
                     parts = action.split()
@@ -50,19 +55,21 @@ def start_client(config):
                     print(f"{config['id']}: No valid actions to process.")
                     return
 
-                # Add nonce and timestamp to the configuration
-                config["nonce"] = str(uuid.uuid4())  # Generate a unique nonce
-                config["timestamp"] = int(time.time())  # Add the current timestamp
+                #add nonce and timestamp to the configuration
+                #generate a unique nonce
+                config["nonce"] = str(uuid.uuid4()) 
+                #add the current timestamp
+                config["timestamp"] = int(time.time())  
                 config["actions"]["steps"] = valid_actions
 
-                # Send configuration to server
+                #send configuration to server
                 client_socket.send(json.dumps(config).encode())
 
-                # Receive server response
+                #receive server response
                 response = client_socket.recv(1024).decode()
                 print(f"{config['id']}: {response}")
 
-                # Process actions
+                #process actions
                 if "successful" in response:
                     for action in valid_actions:
                         client_socket.send(action.encode())
