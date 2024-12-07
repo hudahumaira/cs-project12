@@ -1,6 +1,6 @@
 [
     {
-        "id": "client1",
+        "id": "Tom",
         "password": "password123",
         "nonce": "unique-nonce-12345",
         "timestamp": 1701900000,
@@ -9,16 +9,16 @@
             "port": 65432
         },
         "actions": {
-            "delay": "10",
+            "delay": "1",
             "steps": [
-                "INCREASE 100",
+                "INCREASE 100000000000000",
                 "DECREASE 50",
                 "INCREASE 150"
             ]
         }
     },
     {
-        "id": "client2",
+        "id": "Mark",
         "password": "securePassword321",
         "nonce": "unique-nonce-67890",
         "timestamp": 1701900600,
@@ -27,7 +27,7 @@
             "port": 65432
         },
         "actions": {
-            "delay": "5",
+            "delay": "1",
             "steps": [
                 "DECREASE 30",
                 "INCREASE 120"
@@ -35,7 +35,7 @@
         }
     },
     {
-        "id": "client3",
+        "id": "Sarah",
         "password": "anotherPass456",
         "nonce": "unique-nonce-54321",
         "timestamp": 1701901200,

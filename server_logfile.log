@@ -1,45 +1,7 @@
-
-2024-11-10 18:47:55,277 - Client Tom increased by 10, new value: 10
-2024-11-10 18:47:55,279 - Client Tom increased by 1500, new value: 1510
-2024-11-10 18:47:55,280 - Client Mark increased by 1000000, new value: 1000000
-2024-11-10 18:47:55,280 - Client Emily decreased by 50, new value: -50
-2024-11-10 18:47:55,281 - Client Sarah increased by 250, new value: 250
-2024-11-10 18:47:55,281 - Client Jerry increased by 500, new value: 500
-2024-11-10 18:47:56,280 - Client Tom decreased by 5, new value: 1505
-2024-11-10 18:47:56,280 - Client Tom decreased by 50, new value: 1455
-2024-11-10 18:47:56,281 - Client Mark decreased by 100, new value: 999900
-2024-11-10 18:47:56,281 - Client Emily increased by 75, new value: 25
-2024-11-10 18:47:57,280 - Client Tom increased by 15, new value: 1470
-2024-11-10 18:47:57,282 - Client Jerry decreased by 200, new value: 300
-2024-11-10 18:47:57,282 - Client Emily decreased by 25, new value: 0
-2024-11-10 18:47:58,283 - Client Emily increased by 100, new value: 100
-2024-11-10 18:47:59,282 - Client Jerry increased by 300, new value: 600
-2024-11-10 18:48:00,285 - Client Sarah decreased by 100, new value: 150
-gAAAAABnUx3bRNP10r_3HlgJTyG3PH5QCDWAiBHkY3pBYxBPsoIhfOApi8ZHGqDHIpzzo8hzhCfMyqyYXTKu3t0d_AKoGZrsQnKPbeTl6kZwjPDhYrh-CeU=
-2024-12-06 19:33:16,399 - Error handling client from ('127.0.0.1', 63106): 'str' object has no attribute 'get'
-2024-12-06 19:33:16,652 - Error handling client from ('127.0.0.1', 63108): 'str' object has no attribute 'get'
-2024-12-06 20:20:13,214 - Nonce 312529c9-6fa0-4351-96a5-c6b48456de80 recorded for client client1.
-2024-12-06 20:20:13,223 - Nonce 320fcaa1-69dd-4b59-88c9-0943d4230075 recorded for client client2.
-2024-12-06 20:20:15,482 - Nonce 90422927-9369-4b0e-a778-26ec26303c9a recorded for client client2.
-2024-12-06 20:20:17,760 - Nonce 4f142568-27f1-4ea6-acc2-f908110cd2d6 recorded for client client3.
-2024-12-06 20:24:58,366 - Error handling client from ('127.0.0.1', 63754): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
-2024-12-06 20:24:58,619 - Error handling client from ('127.0.0.1', 63756): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
-2024-12-06 20:24:58,862 - Error handling client from ('127.0.0.1', 63758): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
-2024-12-06 20:25:40,224 - Error handling client from ('127.0.0.1', 63767): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
-2024-12-06 20:25:40,233 - Error handling client from ('127.0.0.1', 63769): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
-2024-12-06 20:25:40,241 - Error handling client from ('127.0.0.1', 63771): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
-2024-12-06 20:25:40,249 - Error handling client from ('127.0.0.1', 63773): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
-2024-12-06 20:27:50,081 - Error handling client from ('127.0.0.1', 63793): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
-2024-12-06 20:27:50,325 - Error handling client from ('127.0.0.1', 63795): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
-2024-12-06 20:27:51,598 - Error handling client from ('127.0.0.1', 63797): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
-2024-12-07 15:47:29,704 - Error handling client from ('127.0.0.1', 55838): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
-2024-12-07 15:47:35,786 - Error handling client from ('127.0.0.1', 55842): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
-2024-12-07 15:47:41,939 - Error handling client from ('127.0.0.1', 55848): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
-2024-12-07 15:49:40,191 - Error handling client from ('127.0.0.1', 55916): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
-2024-12-07 15:49:46,286 - Error handling client from ('127.0.0.1', 55922): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
-2024-12-07 15:49:52,388 - Error handling client from ('127.0.0.1', 55926): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
-2024-12-07 15:50:38,379 - Error handling client from ('127.0.0.1', 55943): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
-2024-12-07 15:50:44,497 - Error handling client from ('127.0.0.1', 55949): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
-2024-12-07 15:51:04,441 - Error handling client from ('127.0.0.1', 55961): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
-2024-12-07 15:51:10,490 - Error handling client from ('127.0.0.1', 55967): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
-2024-12-07 15:51:16,564 - Error handling client from ('127.0.0.1', 55975): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 20:38:30,639 - Client Tom decreased by 50, new counter value: -50
+2024-12-07 20:38:30,639 - Client Tom increased by 150, new counter value: 100
+2024-12-07 20:38:33,962 - Client Mark decreased by 30, new counter value: -30
+2024-12-07 20:38:33,962 - Client Mark increased by 120, new counter value: 90
+2024-12-07 20:38:37,284 - Client Sarah increased by 50, new counter value: 50
+2024-12-07 20:38:37,285 - Client Sarah decreased by 20, new counter value: 30
+2024-12-07 20:38:37,285 - Client Sarah increased by 70, new counter value: 100
