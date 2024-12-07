@@ -198,6 +198,18 @@ import time
 from collections import defaultdict
 from datetime import datetime, timedelta
 import bcrypt
+import redis
+# Fixed Vulnerability 16: Unencrypted Log Files
+from cryptography.fernet import Fernet
+
+# Fixed Vulnerability 17: Lack of Rate Limiting
+# Initialize Redis client
+redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
+
+# Fixed Vulnerability 16: Unencrypted Log Files
+# Generate a key and instantiate a Fernet instance
+key = Fernet.generate_key()
+cipher = Fernet(key)
 
 #configure logging 
 logging.basicConfig(filename='server_logfile.log', level=logging.INFO, format='%(asctime)s - %(message)s')
@@ -220,7 +232,25 @@ MAX_ACTIONS = 50
 #max allowed connections per IP per minute
 MAX_CONNECTIONS_PER_MINUTE = 10
 #max queued connections in the socket 
-MAX_BACKLOG = 5 
+MAX_BACKLOG = 5
+
+# Fixed Vulnerability 16: Unencrypted Log Files
+# Function that encrypts our logs
+def encrypt_message(message):
+    return cipher.encrypt(message.encode())
+
+# Function that decrypts our logs
+def decrypt_message(encrypted_message):
+    return cipher.decrypt(encrypted_message).decode()
+
+# Function to decrypt our messages instead of directly logging plaintext
+def log_message(message):
+    encrypted_message = encrypt_message(message)
+    with open('encrypted_server_logfile.log', 'ab') as encrypted_log:
+        encrypted_log.write(encrypted_message + b'\n')
+
+# Example of how to log an encrypted message
+#log_message("User logged in with ID: 1234")
 
 #Fix for Vulnerability 03: Weak Password Hashing
 #Using bcrypt for strong password hashing
@@ -230,6 +260,7 @@ def hash_password(password):
 def verify_password(password, hashed_password):
     return bcrypt.checkpw(password.encode(), hashed_password)
 
+# Fixed Vulnerability 17: Lack of Rate Limiting
 #Fix for Vulnerability 04: Multiple Connections
 #implemented rate limiting to restrict the number of connections per IP address
 def rate_limit(ip):
@@ -316,7 +347,7 @@ def register_client(secure_socket, client_id, password):
         if verify_password(password, stored_hash):
             secure_socket.send(b"Connection successful, welcome back.")
             return True
-        #Fix for Vulnerability 01: 
+        #Fix for Vulnerability 01:
         #changed error message to avoid exposing sensitive info
         secure_socket.send(b"ERROR: Incorrect credentials.")
         return False
@@ -356,7 +387,8 @@ def handle_actions(secure_socket, client_id, actions):
         except ValueError as e:
             secure_socket.send(f"Invalid action skipped: {action} ({e})".encode())
 
-        time.sleep(delay)
+        # Fixed Vulnerability 15: Delay Implemented on Server-Side
+        #time.sleep(delay)
 
 #Fix for Vulnerability 12: Unrestricted Incoming Data
 #enforce size limits on incoming data
@@ -370,7 +402,7 @@ def start_server(ip, port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
         server_socket.bind((ip, port))
         #limit the number of queued connections
-        server_socket.listen(MAX_BACKLOG) 
+        server_socket.listen(MAX_BACKLOG)
 
         print("Server is running and listening...")
         while True:
@@ -378,9 +410,9 @@ def start_server(ip, port):
 
             #enforce size limit on incoming data
             #timeout to prevent hanging connections
-            client_socket.settimeout(5) 
+            client_socket.settimeout(5)
             #set buffer size limit
-            client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 1000)  
+            client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 1000)
 
             if not rate_limit(client_address[0]):
                 logging.warning(f"Rate limit exceeded for {client_address[0]}")

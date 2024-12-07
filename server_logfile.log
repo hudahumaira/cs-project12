@@ -32,3 +32,14 @@ gAAAAABnUx3bRNP10r_3HlgJTyG3PH5QCDWAiBHkY3pBYxBPsoIhfOApi8ZHGqDHIpzzo8hzhCfMyqyY
 2024-12-06 20:27:50,081 - Error handling client from ('127.0.0.1', 63793): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
 2024-12-06 20:27:50,325 - Error handling client from ('127.0.0.1', 63795): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
 2024-12-06 20:27:51,598 - Error handling client from ('127.0.0.1', 63797): validate_nonce_and_timestamp() missing 1 required positional argument: 'client_timestamp'
+2024-12-07 15:47:29,704 - Error handling client from ('127.0.0.1', 55838): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 15:47:35,786 - Error handling client from ('127.0.0.1', 55842): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 15:47:41,939 - Error handling client from ('127.0.0.1', 55848): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 15:49:40,191 - Error handling client from ('127.0.0.1', 55916): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 15:49:46,286 - Error handling client from ('127.0.0.1', 55922): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 15:49:52,388 - Error handling client from ('127.0.0.1', 55926): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 15:50:38,379 - Error handling client from ('127.0.0.1', 55943): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 15:50:44,497 - Error handling client from ('127.0.0.1', 55949): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 15:51:04,441 - Error handling client from ('127.0.0.1', 55961): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 15:51:10,490 - Error handling client from ('127.0.0.1', 55967): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2024-12-07 15:51:16,564 - Error handling client from ('127.0.0.1', 55975): Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.

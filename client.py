@@ -75,6 +75,7 @@ def start_client(config):
                         client_socket.send(action.encode())
                         response = client_socket.recv(1024).decode()
                         print(f"{config['id']}: {response}")
+                        # Fixed Vulnerability 15: Delay Implemented on Server-Side
                         time.sleep(delay)
     except BrokenPipeError:
         print("No further actions can be taken for the client")

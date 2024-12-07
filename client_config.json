@@ -1,69 +1,54 @@
 [
     {
         "id": "client1",
-        "password": "correct",
-        "nonce": "abc2",
-        "timestamp": 1701786800,
+        "password": "password123",
+        "nonce": "unique-nonce-12345",
+        "timestamp": 1701900000,
         "server": {
             "ip": "localhost",
             "port": 65432
         },
         "actions": {
-            "delay": "1",
+            "delay": "10",
             "steps": [
-                "INCREASE 10",
-                "DECREASE 5",
-                "INCREASE 15"
+                "INCREASE 100",
+                "DECREASE 50",
+                "INCREASE 150"
             ]
         }
     },
     {
         "id": "client2",
-        "password": "wrong12340",
+        "password": "securePassword321",
         "nonce": "unique-nonce-67890",
-        "timestamp": 1701786900,
+        "timestamp": 1701900600,
         "server": {
             "ip": "localhost",
             "port": 65432
         },
         "actions": {
-            "delay": "1",
+            "delay": "5",
             "steps": [
-                "INCREASE 5",
-                "DECREASE 5"
-            ]
-        }
-    },
-    {
-        "id": "client2",
-        "password": "wrong12340",
-        "nonce": "unique-nonce-67890",
-        "timestamp": 1701786900,
-        "server": {
-            "ip": "localhost",
-            "port": 65432
-        },
-        "actions": {
-            "delay": "1",
-            "steps": [
-                "INCREASE 5"
+                "DECREASE 30",
+                "INCREASE 120"
             ]
         }
     },
     {
         "id": "client3",
-        "password": "wrong12340",
-        "nonce": "unique-nonce-67890",
-        "timestamp": 1701786900,
+        "password": "anotherPass456",
+        "nonce": "unique-nonce-54321",
+        "timestamp": 1701901200,
         "server": {
             "ip": "localhost",
             "port": 65432
         },
         "actions": {
-            "delay": "1",
+            "delay": "2",
             "steps": [
-                "INCREASE 100",
-                "DECREASE 5"
+                "INCREASE 50",
+                "DECREASE 20",
+                "INCREASE 70"
             ]
         }
     }
