@@ -107,9 +107,11 @@ Jerry: Connection successful for new client :D
 15. Server-Side Delays
     - Server-side delays block threads
     - Fix: Moved delays to client-side
+
 16. Unencrypted Log Files
    - Logs are stored in plaintext, exposing data
    - Reason for not fixing: Plaintext logs simplify debugging and no sensitive data is logged
+     
 17. Lack of Rate Limiting
    - Unlimited requests overwhelm the server
    - Implement IP-based or token-based rate limiting
